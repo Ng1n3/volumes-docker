@@ -1,5 +1,7 @@
 FROM node:20
 
+ARG DEFAULT_PORT=80
+
 WORKDIR /app
 
 COPY package.json .
@@ -10,8 +12,10 @@ COPY . .
 
 #  VOLUME ["/app/node_modules"]
 
+ENV PORT $DEFAULT_PORT
+
 VOLUME [ "/temp" ]
 
-EXPOSE 80
+EXPOSE $PORT
 
 CMD ["npm", "start"]
